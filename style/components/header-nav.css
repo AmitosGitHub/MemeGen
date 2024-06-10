@@ -1,0 +1,11 @@
+header nav.nav-header {
+  width: 40%;
+}
+
+header nav.nav-header ul li {
+  cursor: pointer;
+}
+
+header nav.nav-header ul li:hover {
+  color: var(--clr2);
+}

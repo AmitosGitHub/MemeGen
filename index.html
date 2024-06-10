@@ -8,13 +8,14 @@
     <title>MemeGen</title>
   </head>
   <body onload="onInit()" class="main-layout">
-    <header class="main-header flex space-between">
+    <header class="main-header flex space-between align-center">
       <div class="logo-header">
         <img src="style/img/LOGO.png" alt="logo image" />
       </div>
+
       <nav class="nav-header">
-        <ul>
-          <li>Gallery</li>
+        <ul class="clean-list flex align-center space-between">
+          <li onclick="openGallery()">Gallery</li>
           <li>Editor</li>
           <li>About</li>
         </ul>
@@ -26,6 +27,7 @@
         <label for="search"></label>
         <input type="search" id="search" placeholder="Search" />
       </nav>
+
       <div class="gallery-content">
         <article onclick="onSelectedImg(this)">
           <img src="style/img/meme-square/1.jpg" alt="image" />
@@ -45,7 +47,7 @@
       </div>
     </section>
 
-    <section class="editor-container flex space-between">
+    <section class="editor-container flex space-between" hidden="">
       <div class="canvas-container flex justify-center align-center">
         <canvas class="main-canvas" width="450" height="450"></canvas>
       </div>

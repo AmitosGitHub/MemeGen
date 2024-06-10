@@ -5,8 +5,15 @@ header {
     var(--clr5),
     var(--clr6)
   );
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--clr4);
+  border-radius: 2rem;
+  padding-inline: 30px;
+  margin-block-start: 20px;
 }
 
 header .logo-header {
-  width: 8rem;
+  width: 10rem;
+  margin-block: 20px;
 }

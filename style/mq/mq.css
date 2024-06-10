@@ -2,8 +2,15 @@
   /* -----HEADER---- */
   header.main-header {
     grid-column: 1/-1;
+    border-radius: 0rem;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-block-start: 0px;
   }
 
+  header .logo-header {
+    width: 7rem;
+  }
   /* --------GALLERY------ */
   .gallery-container {
     grid-column: 1/-1;
