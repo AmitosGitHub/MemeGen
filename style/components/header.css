@@ -1,0 +1,12 @@
+header {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--clr4),
+    var(--clr5),
+    var(--clr6)
+  );
+}
+
+header .logo-header {
+  width: 8rem;
+}

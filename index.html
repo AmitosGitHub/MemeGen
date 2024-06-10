@@ -7,15 +7,42 @@
     <link rel="stylesheet" href="style/main.css" />
     <title>MemeGen</title>
   </head>
-  <body>
-    <header class="main-header">
-      <logo class="logo-header"></logo>
-      <nav class="nav-header"></nav>
+  <body class="main-layout">
+    <header class="main-header flex space-between">
+      <div class="logo-header">
+        <img src="style/img/LOGO.png" alt="logo image" />
+      </div>
+      <nav class="nav-header">
+        <ul>
+          <li>Gallery</li>
+          <li>Editor</li>
+          <li>About</li>
+        </ul>
+      </nav>
     </header>
 
     <section class="gallery-container">
-      <nav class="nav-gallery"></nav>
-      <div class="gallery-content"></div>
+      <nav class="nav-gallery">
+        <label for="search"></label>
+        <input type="search" id="search" placeholder="Search" />
+      </nav>
+      <div class="gallery-content">
+        <article onclick="onSelectedImg(this)">
+          <img src="style/img/meme-square/1.jpg" alt="image" />
+        </article>
+        <article onclick="onSelectedImg(this)">
+          <img src="style/img/meme-square/1.jpg" alt="image" />
+        </article>
+        <article onclick="onSelectedImg(this)">
+          <img src="style/img/meme-square/1.jpg" alt="image" />
+        </article>
+        <article onclick="onSelectedImg(this)">
+          <img src="style/img/meme-square/1.jpg" alt="image" />
+        </article>
+        <article onclick="onSelectedImg(this)">
+          <img src="style/img/meme-square/1.jpg" alt="image" />
+        </article>
+      </div>
     </section>
 
     <section class="editor-container">
@@ -23,7 +50,9 @@
       <div class="editor-tools-container"></div>
     </section>
 
-    <footer class="main-footer"></footer>
+    <footer class="main-footer main-layout full">
+      <h3>@ Meme Generator</h3>
+    </footer>
 
     <script src="js/services/util.js"></script>
     <script src="js/services/main-service.js"></script>

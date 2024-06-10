@@ -1,3 +1,21 @@
-body {
-  background-color: aquamarine;
-}
+/* SETUP */
+@import 'setup/vars.css';
+@import 'setup/typography.css';
+
+/* BASIC */
+@import 'basic/helpers.css';
+@import 'basic/base.css';
+@import 'basic/layout.css';
+
+/* COMPONENTS */
+@import 'components/header.css';
+@import 'components/header-nav.css';
+@import 'components/editor.css';
+@import 'components/canvas.css';
+@import 'components/gallery-content.css';
+@import 'components/gallery-header.css';
+@import 'components/footer.css';
+
+@import 'components/screen.css';
+
+@import 'mq/mq.css';

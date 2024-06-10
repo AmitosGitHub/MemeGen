@@ -1,0 +1,11 @@
+.gallery-container {
+  background-color: var(--clr2);
+  margin-block: 20px;
+  padding: 30px;
+}
+
+.gallery-container .gallery-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}

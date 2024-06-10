@@ -1,0 +1,7 @@
+footer.main-footer {
+  background-color: var(--clr2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
