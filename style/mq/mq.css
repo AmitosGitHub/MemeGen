@@ -1,0 +1,35 @@
+@media screen and (max-width: 600px) {
+  /* -----HEADER---- */
+  header.main-header {
+    grid-column: 1/-1;
+  }
+
+  /* --------GALLERY------ */
+  .gallery-container {
+    grid-column: 1/-1;
+    padding: 10px;
+  }
+  .gallery-container .gallery-content {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 5px;
+  }
+
+  /* -------EDITOR------- */
+
+  section.editor-container {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  section.editor-container .canvas-container {
+    width: 100%;
+  }
+
+  section.editor-container .editor-tools-container {
+    padding: 0px;
+    width: 100%;
+  }
+}

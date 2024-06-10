@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/main.css" />
     <title>MemeGen</title>
   </head>
-  <body class="main-layout">
+  <body onload="onInit()" class="main-layout">
     <header class="main-header flex space-between">
       <div class="logo-header">
         <img src="style/img/LOGO.png" alt="logo image" />
@@ -45,9 +45,59 @@
       </div>
     </section>
 
-    <section class="editor-container">
-      <canvas class="main-canvas"></canvas>
-      <div class="editor-tools-container"></div>
+    <section class="editor-container flex space-between">
+      <div class="canvas-container flex justify-center align-center">
+        <canvas class="main-canvas" width="450" height="450"></canvas>
+      </div>
+
+      <div
+        class="editor-tools-container flex flex-direction-column space-around align-center"
+      >
+        <form oninput="onDrawText()">
+          <label for="inputTxt"></label>
+          <input
+            type="text"
+            id="inputTxt"
+            class="inputTxt"
+            placeholder="Writing meme..."
+          />
+        </form>
+
+        <nav class="nav-txt-tools">
+          <ul class="clean-list">
+            <li>
+              <button>❎</button>
+              <button>❎</button>
+              <button>❎</button>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="nav-disgen-tools">
+          <ul class="clean-list">
+            <li>
+              <button>❎</button>
+              <button>❎</button>
+              <button>❎</button>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="nav-emoji-tools">
+          <ul class="clean-list">
+            <li>
+              <button>🤣</button>
+              <button>🤣</button>
+              <button>🤣</button>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="nav-share-dn">
+          <a href="#">Share</a>
+          <a href="#">Download</a>
+        </nav>
+      </div>
     </section>
 
     <footer class="main-footer main-layout full">

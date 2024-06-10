@@ -1,0 +1,11 @@
+section.editor-container {
+  margin-block: 30px;
+  width: 100%;
+}
+
+section.editor-container .editor-tools-container {
+  width: 45%;
+  padding: 20px;
+  background-color: var(--clr2);
+  border-radius: 1rem;
+}

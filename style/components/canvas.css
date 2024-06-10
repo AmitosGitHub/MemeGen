@@ -1,0 +1,10 @@
+.canvas-container {
+  background-color: aqua;
+  max-width: 45%;
+  max-height: 500px;
+}
+
+.canvas-container .main-canvas {
+  border: 1px solid black;
+  background-color: rgb(238, 246, 246);
+}

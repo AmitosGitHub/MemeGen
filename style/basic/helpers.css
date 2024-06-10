@@ -5,6 +5,9 @@
 .flex.space-between {
   justify-content: space-between;
 }
+.flex.space-around {
+  justify-content: space-around;
+}
 
 .flex.align-center {
   align-items: center;
