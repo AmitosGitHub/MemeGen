@@ -14,3 +14,7 @@ function InitCanvas() {
 
   renderCanvas()
 }
+
+function onToggleMenu() {
+  document.body.classList.toggle('open-menu')
+}

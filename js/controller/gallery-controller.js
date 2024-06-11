@@ -19,17 +19,31 @@ function renderGallery() {
 
 function onSelectedImg(elImg, idx) {
   setSelectedImg(idx)
-  openEditor()
+  onOpenEditor()
 
   renderCanvas()
 }
 
-function openEditor() {
+function onOpenEditor() {
   document.querySelector('.gallery-container').classList.add('hide')
   document.querySelector('.editor-container').classList.remove('hide')
 }
 
-function openGallery() {
+function onOpenGallery() {
   document.querySelector('.gallery-container').classList.remove('hide')
   document.querySelector('.editor-container').classList.add('hide')
+}
+
+function onFilterBy(elFilterBy) {
+  console.log(elFilterBy)
+  filterBy(elFilterBy)
+
+  renderGallery()
+}
+
+function onSearchImg(elInput, isFocus = true) {
+  searchImg(elInput.value)
+  if (!isFocus) elInput.value = ''
+
+  renderGallery()
 }

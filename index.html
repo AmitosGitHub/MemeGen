@@ -12,7 +12,7 @@
     <title>MemeGen</title>
   </head>
 
-  <body onload="onInit()" class="main-layout">
+  <body onload="onInit()" class="main-layout open-menu">
     <header class="main-header flex space-between align-center">
       <div class="logo-header">
         <img src="style/img/LOGO.png" alt="logo image" />
@@ -20,22 +20,39 @@
 
       <nav class="nav-header">
         <ul class="clean-list flex align-center space-between">
-          <li onclick="openGallery()">Gallery</li>
-          <li>Editor</li>
+          <li onclick="onOpenGallery()">Gallery</li>
+          <li onclick="onOpenEditor()">Editor</li>
           <li>About</li>
         </ul>
-
-        <button>
-          <i class="fa-solid fa-bars"></i>
-        </button>
       </nav>
+
+      <button onclick="onToggleMenu()" class="btn-hamburger-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div onclick="onToggleMenu()" class="screen-dark"></div>
     </header>
 
     <section class="gallery-container">
-      <nav class="nav-gallery">
-        <label for="search"></label>
-        <input type="search" id="search" placeholder="Search" />
-        <i class="fa-solid fa-magnifying-glass"></i>
+      <nav class="nav-gallery flex space-between">
+        <label for="search">
+          <input
+            type="search"
+            id="search"
+            placeholder="Search..."
+            oninput="onSearchImg(this)"
+            onchange="onSearchImg(this,false)"
+          />
+          <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+        </label>
+
+        <ul class="filterList clean-list flex space-between">
+          <li onclick="onFilterBy('All')">All</li>
+          <li onclick="onFilterBy('baby')">baby</li>
+          <li onclick="onFilterBy('kids')">kids</li>
+          <li onclick="onFilterBy('funny')">funny</li>
+          <li onclick="onFilterBy('human')">human</li>
+        </ul>
       </nav>
 
       <div class="gallery-content"></div>

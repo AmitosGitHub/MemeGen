@@ -9,3 +9,7 @@ header nav.nav-header ul li {
 header nav.nav-header ul li:hover {
   color: var(--clr2);
 }
+
+header .btn-hamburger-menu {
+  display: none;
+}

@@ -1,3 +1,25 @@
 .gallery-container nav.nav-gallery {
-  margin-block: 2rem;
+  margin-block: 1rem 3rem;
+  align-items: center;
+}
+
+.gallery-container .nav-gallery label {
+  width: 50%;
+}
+
+.gallery-container .nav-gallery input {
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+}
+
+.gallery-container .nav-gallery .filterList {
+  width: 40%;
+  font-size: 20px;
+  color: var(--clr5);
+  font-weight: 600;
+}
+
+.gallery-container .nav-gallery .filterList li {
+  padding: 3px;
 }
