@@ -34,3 +34,11 @@
 .hide {
   display: none;
 }
+
+.btn-border {
+  border-radius: 7px;
+  border-top: 2px solid rgb(246, 244, 244);
+  border-left: 2px solid rgb(247, 245, 245);
+  border-bottom: 4px solid rgb(96, 92, 92);
+  border-right: 4px solid rgb(103, 100, 100);
+}

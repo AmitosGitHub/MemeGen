@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/68aca2cf0b.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style/main.css" />
     <title>MemeGen</title>
   </head>
+
   <body onload="onInit()" class="main-layout">
     <header class="main-header flex space-between align-center">
       <div class="logo-header">
@@ -19,6 +24,10 @@
           <li>Editor</li>
           <li>About</li>
         </ul>
+
+        <button>
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </nav>
     </header>
 
@@ -26,28 +35,13 @@
       <nav class="nav-gallery">
         <label for="search"></label>
         <input type="search" id="search" placeholder="Search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
       </nav>
 
-      <div class="gallery-content">
-        <article onclick="onSelectedImg(this)">
-          <img src="style/img/meme-square/1.jpg" alt="image" />
-        </article>
-        <article onclick="onSelectedImg(this)">
-          <img src="style/img/meme-square/1.jpg" alt="image" />
-        </article>
-        <article onclick="onSelectedImg(this)">
-          <img src="style/img/meme-square/1.jpg" alt="image" />
-        </article>
-        <article onclick="onSelectedImg(this)">
-          <img src="style/img/meme-square/1.jpg" alt="image" />
-        </article>
-        <article onclick="onSelectedImg(this)">
-          <img src="style/img/meme-square/1.jpg" alt="image" />
-        </article>
-      </div>
+      <div class="gallery-content"></div>
     </section>
 
-    <section class="editor-container flex space-between" hidden="">
+    <section class="editor-container hide flex space-between">
       <div class="canvas-container flex justify-center align-center">
         <canvas class="main-canvas" width="450" height="450"></canvas>
       </div>
@@ -55,22 +49,33 @@
       <div
         class="editor-tools-container flex flex-direction-column space-around align-center"
       >
-        <form oninput="onDrawText()">
+        <form oninput="onDrawText(event)">
           <label for="inputTxt"></label>
           <input
             type="text"
             id="inputTxt"
             class="inputTxt"
-            placeholder="Writing meme..."
+            placeholder="writing..."
+            value=""
           />
         </form>
 
         <nav class="nav-txt-tools">
-          <ul class="clean-list">
+          <ul class="clean-list flex justify-center">
             <li>
-              <button>❎</button>
-              <button>❎</button>
-              <button>❎</button>
+              <button onclick="onSwitchLineTxt()">
+                <i class="fa-solid fa-right-left"></i>
+              </button>
+            </li>
+            <li>
+              <button onclick="onAddLineTxt()">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </li>
+            <li>
+              <button onclick="onDeleteLineTxt()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </li>
           </ul>
         </nav>
@@ -78,26 +83,55 @@
         <nav class="nav-disgen-tools">
           <ul class="clean-list">
             <li>
-              <button>❎</button>
-              <button>❎</button>
-              <button>❎</button>
+              <!-- <i class="fa-solid fa-palette"></i> -->
+              <input
+                type="color"
+                class="plaette btn-border"
+                oninput="onChangeColor(this.value)"
+              />
+              <button>
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button>
+                <i class="fa-solid fa-align-right"></i>
+              </button>
+              <button>
+                <i class="fa-solid fa-align-left"></i>
+              </button>
+              <button>
+                <i class="fa-solid fa-align-center"></i>
+              </button>
+              <button onclick="onChangeFontSize(5)">
+                <i class="fa-solid fa-font font-increase"></i>
+              </button>
+              <button onclick="onChangeFontSize(-5)">
+                <i class="fa-solid fa-font font-decrease"></i>
+              </button>
+              <button>
+                <i class="fa-solid fa-rotate"></i>
+              </button>
             </li>
           </ul>
         </nav>
 
         <nav class="nav-emoji-tools">
-          <ul class="clean-list">
-            <li>
-              <button>🤣</button>
-              <button>🤣</button>
-              <button>🤣</button>
-            </li>
+          <ul class="clean-list flex space-between">
+            <li>🤣</li>
+            <li>🤣</li>
+            <li>🤣</li>
+            <li>🤣</li>
           </ul>
         </nav>
 
         <nav class="nav-share-dn">
-          <a href="#">Share</a>
-          <a href="#">Download</a>
+          <a href="#" class="btn-border"
+            >Share
+            <i class="fa-solid fa-share-nodes"></i>
+          </a>
+          <a href="#" class="btn-border"
+            >Download
+            <i class="fa-solid fa-download"></i>
+          </a>
         </nav>
       </div>
     </section>
@@ -110,8 +144,8 @@
     <script src="js/services/main-service.js"></script>
     <script src="js/services/editor-service.js"></script>
     <script src="js/services/gallery-service.js"></script>
-    <script src="js/controller/main-controller.js"></script>
     <script src="js/controller/editor-controller.js"></script>
     <script src="js/controller/gallery-controller.js"></script>
+    <script src="js/controller/main-controller.js"></script>
   </body>
 </html>

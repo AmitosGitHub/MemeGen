@@ -1,23 +1,64 @@
 'use strict'
 
-function onDrawText() {
-  const elTxt = document.querySelector('.inputTxt').value
+function onDrawText(ev) {
+  ev.preventDefault()
+
+  let elTxt = document.querySelector('.inputTxt').value
 
   setTextMeme(elTxt)
-  //   drawText(elTxt)
+
   renderCanvas()
 }
 
 function renderCanvas() {
   clearCanvas()
 
-  drawImg()
+  const img = getImgMeme()
 
-  setTimeout(() => {
-    drawLineText()
-    gMeme.lines.forEach((item, idx) => {
-      if (!item.txt) drawText('writing...', gElCanvas.width / 2, idx * 200 + 50)
-      else drawText(item.txt, gElCanvas.width / 2, idx * 200 + 40)
+  img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
+    drawLineRect()
+
+    gMeme.lines.forEach((line, idx) => {
+      // setSelectedLineIdx(idx)
+      const currLine = getLineTxt(idx)
+      drawText(currLine)
     })
-  }, 40)
+  }
+
+  let elTxt = document.querySelector('.inputTxt')
+  const lineTxt = getLineTxt()
+  if (lineTxt.txt === 'New Line') elTxt.value = ''
+  else elTxt.value = lineTxt.txt
+}
+
+function onChangeColor(clr) {
+  setChangeColor(clr)
+
+  renderCanvas()
+}
+
+function onChangeFontSize(size) {
+  setChangeFontSize(size)
+
+  renderCanvas()
+}
+
+function onAddLineTxt() {
+  addLineTxt()
+
+  renderCanvas()
+}
+
+function onSwitchLineTxt() {
+  switchLineTxt()
+
+  renderCanvas()
+}
+
+function onDeleteLineTxt() {
+  deleteLineTxt()
+
+  renderCanvas()
 }

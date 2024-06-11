@@ -3,7 +3,9 @@
 function renderGallery() {
   var strHtml = ''
 
-  gImgs.forEach(
+  const imgs = getGalleryImgs()
+
+  imgs.forEach(
     (img, idx) =>
       (strHtml += `
          <article onclick="onSelectedImg(this,${idx + 1})">
@@ -23,11 +25,11 @@ function onSelectedImg(elImg, idx) {
 }
 
 function openEditor() {
-  document.querySelector('.gallery-container').hidden = true
-  document.querySelector('.editor-container').hidden = false
+  document.querySelector('.gallery-container').classList.add('hide')
+  document.querySelector('.editor-container').classList.remove('hide')
 }
 
 function openGallery() {
-  document.querySelector('.gallery-container').hidden = false
-  document.querySelector('.editor-container').hidden = true
+  document.querySelector('.gallery-container').classList.remove('hide')
+  document.querySelector('.editor-container').classList.add('hide')
 }
