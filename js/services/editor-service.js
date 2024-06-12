@@ -1,7 +1,7 @@
 'use strict'
 
 var gMeme = {
-  selectedImgId: 5,
+  selectedImgId: 8,
   selectedLineIdx: 0,
   lines: [
     {
@@ -17,11 +17,16 @@ var gMeme = {
       },
     },
   ],
+  emojis: [],
 }
 
 function setTextMeme(txt) {
   if (!txt) txt = 'New Line'
   gMeme.lines[gMeme.selectedLineIdx].txt = txt
+}
+
+function getMeme() {
+  return gMeme
 }
 
 function getLineTxt(idx = gMeme.selectedLineIdx) {
@@ -133,4 +138,21 @@ function deleteLineTxt() {
   gMeme.lines.splice(idx, 1)
 
   gMeme.selectedLineIdx = idx > 0 ? idx - 1 : idx
+}
+
+function setSelectedFont(font) {
+  gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setSelectedEmoji(emoji) {
+  gMeme.emojis.push({
+    type: emoji,
+    pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 },
+  })
+}
+
+function drawEmoji(emoji) {
+  gCtx.beginPath()
+  gCtx.fillText(emoji.type, emoji.pos.x, emoji.pos.y)
+  gCtx.closePath()
 }

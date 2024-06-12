@@ -93,7 +93,13 @@ var gImgs = [
   },
 ]
 
-var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 }
+var gKeywordSearchCountMap = {
+  All: 25,
+  Funny: 12,
+  Dog: 16,
+  Animal: 20,
+  Movie: 10,
+}
 var gFilterBy = 'All'
 var gSearch = ''
 
@@ -103,21 +109,46 @@ function setSelectedImg(idx) {
 
 function getGalleryImgs() {
   let imgs = []
-  if (gSearch !== '')
-    imgs = gImgs.filter((img) => img.keywords.includes(gSearch))
+  //-------- searching--------
+  if (gSearch)
+    imgs = gImgs.filter((img) =>
+      img.keywords.includes(
+        gSearch || gSearch.charAt(0).toUpperCase() + gSearch.slice(1)
+      )
+    )
 
-  if (!imgs || imgs.length === 0) {
-    imgs = gImgs
+  if (!imgs || imgs.length === 0 || !gSearch || gFilterBy === 'All') {
+    imgs = JSON.parse(JSON.stringify(gImgs))
   }
+
   if (gFilterBy !== 'All')
-    imgs = imgs.filter((img) => img.keywords.includes(gFilterBy))
+    imgs = imgs.filter((img) =>
+      img.keywords.includes(
+        gFilterBy.charAt(0).toLowerCase() + gFilterBy.slice(1)
+      )
+    )
   return imgs
 }
 
-function filterBy(filterBy) {
+function setFilterBy(filterBy) {
   gFilterBy = filterBy
+  setKeywordSearchCountMap(filterBy)
 }
 
 function searchImg(txt) {
   gSearch = txt
+}
+
+function setKeywordSearchCountMap(filterBy) {
+  gKeywordSearchCountMap[filterBy]++
+
+  if (gKeywordSearchCountMap[filterBy] >= 30) {
+    for (const key in gKeywordSearchCountMap) {
+      gKeywordSearchCountMap[key] /= 2
+    }
+  }
+}
+
+function getKeywordSearchCountMap() {
+  return gKeywordSearchCountMap
 }

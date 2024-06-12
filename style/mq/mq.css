@@ -9,7 +9,7 @@
   }
 
   header .logo-header {
-    width: 7rem;
+    width: 10rem;
   }
 
   header .nav-header {
@@ -43,9 +43,6 @@
 
   header .btn-hamburger-menu {
     display: block;
-    background: none;
-    font-size: 20px;
-    border: none;
   }
 
   /* --------GALLERY------ */
@@ -82,7 +79,8 @@
   }
 
   section.editor-container .editor-tools-container {
-    padding: 0px;
+    margin-block: 20px;
+    padding: 10px 0px;
     width: 100%;
   }
 }

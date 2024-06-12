@@ -1,7 +1,7 @@
 'use strict'
 
 function renderGallery() {
-  var strHtml = ''
+  let strHtml = ''
 
   const imgs = getGalleryImgs()
 
@@ -35,10 +35,11 @@ function onOpenGallery() {
 }
 
 function onFilterBy(elFilterBy) {
-  console.log(elFilterBy)
-  filterBy(elFilterBy)
+  setFilterBy(elFilterBy)
 
   renderGallery()
+  renderFilterBy()
+  markSelectFilter(elFilterBy)
 }
 
 function onSearchImg(elInput, isFocus = true) {
@@ -46,4 +47,32 @@ function onSearchImg(elInput, isFocus = true) {
   if (!isFocus) elInput.value = ''
 
   renderGallery()
+}
+
+function renderFilterBy() {
+  const keyWordMap = getKeywordSearchCountMap()
+  let strHTML = ''
+
+  for (const key in keyWordMap) {
+    const count = keyWordMap[key]
+
+    strHTML += `<li class="${key}" onclick="onFilterBy('${key}')" style="font-size: ${
+      count / 10
+    }rem;">${key}</li>`
+  }
+
+  document.querySelector('.filterList').innerHTML = strHTML
+}
+
+function markSelectFilter(elFilterBy) {
+  const elLists = document.querySelectorAll('.filterList li')
+
+  elLists.forEach((li) => {
+    if (li.classList.value.includes(elFilterBy)) li.classList.add('active')
+    if (
+      li.classList.value.includes('active') &&
+      !li.classList.value.includes(elFilterBy)
+    )
+      li.classList.remove('active')
+  })
 }

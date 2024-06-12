@@ -21,6 +21,10 @@
   flex-direction: column;
 }
 
+.flex.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .clean-list {
   margin: 0;
   padding: 0;

@@ -13,4 +13,7 @@ header nav.nav-header ul li:hover {
 header .btn-hamburger-menu {
   display: none;
   color: var(--clr4);
+  background: none;
+  font-size: 40px;
+  border: none;
 }

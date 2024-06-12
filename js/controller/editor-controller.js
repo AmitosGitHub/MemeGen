@@ -11,6 +11,8 @@ function onDrawText(ev) {
 }
 
 function renderCanvas() {
+  const meme = getMeme()
+
   clearCanvas()
 
   const img = getImgMeme()
@@ -20,11 +22,14 @@ function renderCanvas() {
 
     drawLineRect()
 
-    gMeme.lines.forEach((line, idx) => {
-      // setSelectedLineIdx(idx)
+    meme.lines.forEach((line, idx) => {
       const currLine = getLineTxt(idx)
       drawText(currLine)
     })
+
+    if (meme.emojis.length > 0) {
+      meme.emojis.forEach((emoji) => drawEmoji(emoji))
+    }
   }
 
   let elTxt = document.querySelector('.inputTxt')
@@ -59,6 +64,18 @@ function onSwitchLineTxt() {
 
 function onDeleteLineTxt() {
   deleteLineTxt()
+
+  renderCanvas()
+}
+
+function onSelectedFont(font) {
+  setSelectedFont(font)
+
+  renderCanvas()
+}
+
+function onSelectedEmoji(emoji) {
+  setSelectedEmoji(emoji)
 
   renderCanvas()
 }

@@ -55,6 +55,8 @@ section.editor-container .editor-tools-container {
 
 .editor-tools-container nav.nav-emoji-tools {
   background-color: rgb(241, 235, 246);
+  margin-block: 10px;
+  font-size: 40px;
 }
 
 .editor-tools-container nav.nav-disgen-tools .font-increase {
@@ -63,4 +65,18 @@ section.editor-container .editor-tools-container {
 
 .editor-tools-container nav.nav-disgen-tools .font-decrease {
   font-size: 25px;
+}
+
+.editor-tools-container .nav-share-dn a {
+  padding: 5px 5px;
+  color: var(--clr4);
+  font-size: 20px;
+}
+
+.editor-tools-container .nav-share-dn a.btn-share {
+  background-color: green;
+}
+
+.editor-tools-container .nav-share-dn a.btn-dn {
+  background-color: blue;
 }

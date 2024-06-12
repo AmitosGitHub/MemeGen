@@ -12,7 +12,7 @@
     <title>MemeGen</title>
   </head>
 
-  <body onload="onInit()" class="main-layout open-menu">
+  <body onload="onInit()" class="main-layout">
     <header class="main-header flex space-between align-center">
       <div class="logo-header">
         <img src="style/img/LOGO.png" alt="logo image" />
@@ -46,13 +46,7 @@
           <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
         </label>
 
-        <ul class="filterList clean-list flex space-between">
-          <li onclick="onFilterBy('All')">All</li>
-          <li onclick="onFilterBy('baby')">baby</li>
-          <li onclick="onFilterBy('kids')">kids</li>
-          <li onclick="onFilterBy('funny')">funny</li>
-          <li onclick="onFilterBy('human')">human</li>
-        </ul>
+        <ul class="filterList clean-list flex space-between"></ul>
       </nav>
 
       <div class="gallery-content"></div>
@@ -98,7 +92,7 @@
         </nav>
 
         <nav class="nav-disgen-tools">
-          <ul class="clean-list">
+          <ul class="clean-list flex flex-wrap">
             <li>
               <!-- <i class="fa-solid fa-palette"></i> -->
               <input
@@ -106,46 +100,72 @@
                 class="plaette btn-border"
                 oninput="onChangeColor(this.value)"
               />
+            </li>
+            <li>
               <button>
                 <i class="fa-solid fa-pen"></i>
               </button>
+            </li>
+            <li>
               <button>
                 <i class="fa-solid fa-align-right"></i>
               </button>
+            </li>
+            <li>
               <button>
                 <i class="fa-solid fa-align-left"></i>
               </button>
+            </li>
+            <li>
               <button>
                 <i class="fa-solid fa-align-center"></i>
               </button>
+            </li>
+            <li>
               <button onclick="onChangeFontSize(5)">
                 <i class="fa-solid fa-font font-increase"></i>
               </button>
+            </li>
+            <li>
               <button onclick="onChangeFontSize(-5)">
                 <i class="fa-solid fa-font font-decrease"></i>
               </button>
+            </li>
+            <li>
               <button>
                 <i class="fa-solid fa-rotate"></i>
               </button>
+            </li>
+            <li>
+              <select onchange="onSelectedFont(this.value)">
+                <option value="Arial">Arial</option>
+                <option value="sans-serif">sans-serif</option>
+                <option value="monospace">monospace</option>
+                <option value="david">david</option>
+              </select>
             </li>
           </ul>
         </nav>
 
         <nav class="nav-emoji-tools">
           <ul class="clean-list flex space-between">
-            <li>🤣</li>
-            <li>🤣</li>
-            <li>🤣</li>
-            <li>🤣</li>
+            <li onclick="onSelectedEmoji('🤣')">🤣</li>
+            <li onclick="onSelectedEmoji('😇')">😇</li>
+            <li onclick="onSelectedEmoji('😍')">😍</li>
+            <li onclick="onSelectedEmoji('😘')">😘</li>
+            <li onclick="onSelectedEmoji('😅')">😅</li>
+            <li onclick="onSelectedEmoji('😛')">😛</li>
+            <li onclick="onSelectedEmoji('🧐')">🧐</li>
+            <li onclick="onSelectedEmoji('🥰')">🥰</li>
           </ul>
         </nav>
 
-        <nav class="nav-share-dn">
-          <a href="#" class="btn-border"
+        <nav class="nav-share-dn flex space-around">
+          <a href="#" class="btn-border btn-share"
             >Share
             <i class="fa-solid fa-share-nodes"></i>
           </a>
-          <a href="#" class="btn-border"
+          <a href="#" class="btn-border btn-dn"
             >Download
             <i class="fa-solid fa-download"></i>
           </a>

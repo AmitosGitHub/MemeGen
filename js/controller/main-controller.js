@@ -5,11 +5,15 @@ var gCtx
 
 function onInit() {
   renderGallery()
+  renderFilterBy()
   InitCanvas()
+
   window.addEventListener('resize', () => {
     resizeCanvas()
     renderCanvas()
   })
+
+  renderCanvas()
 }
 
 function InitCanvas() {
