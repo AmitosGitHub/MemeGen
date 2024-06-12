@@ -58,6 +58,12 @@
     gap: 5px;
   }
 
+  /* ---GALLERY-NAV------- */
+
+  .gallery-container .nav-gallery .filterList {
+    flex-wrap: wrap;
+  }
+
   /* -------EDITOR------- */
 
   section.editor-container {
@@ -70,7 +76,9 @@
 
   section.editor-container .canvas-container {
     margin-block: 10px;
-    width: 100%;
+    width: 100vw;
+    height: 400px;
+    margin-block: 10px 20px;
   }
 
   section.editor-container .editor-tools-container {
