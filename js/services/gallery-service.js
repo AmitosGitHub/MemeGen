@@ -103,8 +103,9 @@ var gKeywordSearchCountMap = {
 var gFilterBy = 'All'
 var gSearch = ''
 
-function setSelectedImg(idx) {
+function setSelectedImg(idx, src) {
   gMeme.selectedImgId = idx
+  gMeme.imgUpSrc = src
 }
 
 function getGalleryImgs() {

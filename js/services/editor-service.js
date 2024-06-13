@@ -1,6 +1,7 @@
 'use strict'
 
 var gMeme = {
+  imgUpSrc: '',
   selectedImgId: 8,
   selectedLineIdx: 0,
   lines: [
@@ -83,8 +84,9 @@ function drawImg() {
 
 function getImgMeme() {
   const img = new Image()
-  img.src = `style/img/meme-square/${gMeme.selectedImgId}.jpg`
-
+  if (!gMeme.imgUpSrc)
+    img.src = `style/img/meme-square/${gMeme.selectedImgId}.jpg`
+  else img.src = gMeme.imgUpSrc
   return img
 }
 

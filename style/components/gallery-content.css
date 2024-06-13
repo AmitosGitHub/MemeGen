@@ -9,3 +9,10 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
+
+.gallery-container .gallery-content .card-upload-file {
+  background-color: var(--clr4);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}

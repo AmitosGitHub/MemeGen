@@ -7,6 +7,7 @@ function onInit() {
   renderGallery()
   renderFilterBy()
   InitCanvas()
+  resizeCanvas()
 
   window.addEventListener('resize', () => {
     resizeCanvas()
@@ -31,4 +32,14 @@ function resizeCanvas() {
   gElCanvas.width = elContainer.offsetWidth
   // Unless needed, better keep height fixed.
   gElCanvas.height = elContainer.offsetHeight
+}
+
+function onOpenEditor() {
+  document.querySelector('.gallery-container').classList.add('hide')
+  document.querySelector('.editor-container').classList.remove('hide')
+}
+
+function onOpenGallery() {
+  document.querySelector('.gallery-container').classList.remove('hide')
+  document.querySelector('.editor-container').classList.add('hide')
 }

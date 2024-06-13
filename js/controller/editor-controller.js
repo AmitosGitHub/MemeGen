@@ -1,35 +1,22 @@
 'use strict'
 
-function onDrawText(ev) {
-  ev.preventDefault()
-
-  let elTxt = document.querySelector('.inputTxt').value
-
-  setTextMeme(elTxt)
-
-  renderCanvas()
-}
-
 function renderCanvas() {
   const meme = getMeme()
-
-  clearCanvas()
-
   const img = getImgMeme()
+  clearCanvas()
 
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
     drawLineRect()
 
     meme.lines.forEach((line, idx) => {
       const currLine = getLineTxt(idx)
       drawText(currLine)
-    })
 
-    if (meme.emojis.length > 0) {
-      meme.emojis.forEach((emoji) => drawEmoji(emoji))
-    }
+      if (meme.emojis.length > 0) {
+        meme.emojis.forEach((emoji) => drawEmoji(emoji))
+      }
+    })
   }
 
   let elTxt = document.querySelector('.inputTxt')
@@ -40,6 +27,16 @@ function renderCanvas() {
 
 function onChangeColor(clr) {
   setChangeColor(clr)
+
+  renderCanvas()
+}
+
+function onDrawText(ev) {
+  ev.preventDefault()
+
+  let elTxt = document.querySelector('.inputTxt').value
+
+  setTextMeme(elTxt)
 
   renderCanvas()
 }

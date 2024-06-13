@@ -1,15 +1,22 @@
 'use strict'
 
 function renderGallery() {
-  let strHtml = ''
+  let strHtml = `
+   <article class="card-upload-file">
+    <input
+      type="file"
+      onchange="onImgInput(event)"
+      accept=".jpg, .jpeg, .png"
+    />
+  </article>`
 
   const imgs = getGalleryImgs()
 
   imgs.forEach(
     (img, idx) =>
       (strHtml += `
-         <article onclick="onSelectedImg(this,${idx + 1})">
-           <img src="${img.url}" alt="image" />
+         <article onclick="onSelectedImg(this,${img.id})">
+           <img src="${img.url ? img.url : img.src}" alt="image" />
          </article>
          `)
   )
@@ -18,20 +25,11 @@ function renderGallery() {
 }
 
 function onSelectedImg(elImg, idx) {
-  setSelectedImg(idx)
+  const img = gImgs.find((img) => img.id === idx)
+  setSelectedImg(idx, img.src)
   onOpenEditor()
 
   renderCanvas()
-}
-
-function onOpenEditor() {
-  document.querySelector('.gallery-container').classList.add('hide')
-  document.querySelector('.editor-container').classList.remove('hide')
-}
-
-function onOpenGallery() {
-  document.querySelector('.gallery-container').classList.remove('hide')
-  document.querySelector('.editor-container').classList.add('hide')
 }
 
 function onFilterBy(elFilterBy) {
