@@ -16,4 +16,5 @@ header .btn-hamburger-menu {
   background: none;
   font-size: 40px;
   border: none;
+  margin-right: -10px;
 }

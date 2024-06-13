@@ -4,9 +4,11 @@ var gMeme = {
   imgUpSrc: '',
   selectedImgId: 8,
   selectedLineIdx: 0,
+  selectedShapeDrag: '',
   lines: [
     {
       id: makeId(),
+      type: 'txt',
       txt: 'New Line',
       size: 50,
       align: 'center',
@@ -16,6 +18,13 @@ var gMeme = {
         x: 200,
         y: 60,
       },
+      posRect: {
+        x: 20,
+        y: 20,
+        width: 400,
+        height: 60,
+      },
+      isDrag: false,
     },
   ],
   emojis: [],
@@ -57,12 +66,19 @@ function drawText(currLine = getLineTxt()) {
 function drawLineRect() {
   const currLine = getLineTxt()
   const y = currLine.pos.y
-  drawRect(20, y - 30)
+  const width = gCtx.measureText(currLine.txt).width
+  // drawRect(20, y - 30)
+  drawRect(
+    currLine.posRect.x,
+    currLine.posRect.y,
+    currLine.posRect.width,
+    currLine.posRect.height
+  )
 }
 
-function drawRect(x, y) {
+function drawRect(x, y, width, height) {
   gCtx.beginPath()
-  gCtx.rect(x, y, gElCanvas.width - 50, 60)
+  gCtx.rect(x, y, width, height)
   gCtx.lineWidth = 1
   gCtx.strokeStyle = 'black'
   gCtx.stroke()
@@ -113,6 +129,7 @@ function createDefaultTxtLine() {
 
   return {
     id: makeId(),
+    type: 'txt',
     txt: 'New Line',
     size: 50,
     align: 'center',
@@ -122,6 +139,13 @@ function createDefaultTxtLine() {
       x: 200,
       y: posY,
     },
+    posRect: {
+      x: 20,
+      y: posY - 30,
+      width: 400,
+      height: 60,
+    },
+    isDrag: false,
   }
 }
 
@@ -148,13 +172,18 @@ function setSelectedFont(font) {
 
 function setSelectedEmoji(emoji) {
   gMeme.emojis.push({
-    type: emoji,
+    type: 'emoji',
+    txt: emoji,
+    size: 100,
+    radius: 30,
     pos: { x: gElCanvas.width / 2, y: gElCanvas.height / 2 },
+    isDrag: false,
   })
 }
 
 function drawEmoji(emoji) {
   gCtx.beginPath()
-  gCtx.fillText(emoji.type, emoji.pos.x, emoji.pos.y)
+  gCtx.font = `${emoji.size}px`
+  gCtx.fillText(emoji.txt, emoji.pos.x, emoji.pos.y)
   gCtx.closePath()
 }

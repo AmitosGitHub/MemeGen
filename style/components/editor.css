@@ -43,18 +43,40 @@ section.editor-container .editor-tools-container {
   border-radius: 1rem;
   font-size: 20px;
   font-weight: 400;
-  color: rgb(122, 120, 120);
+  color: black;
 }
 
-.editor-tools-container nav.nav-txt-tools {
+.editor-tools-container nav.nav-txt-tools .fa-right-left {
+  transform: rotate(90deg);
 }
 
 .editor-tools-container nav.nav-disgen-tools {
-  background-color: rgb(180, 115, 240);
+  background-image: radial-gradient(
+    rgb(235, 230, 240),
+    rgb(180, 115, 240),
+    rgb(68, 22, 111)
+  );
+}
+
+.nav-disgen-tools li.li-palette input {
+  width: 60px;
+  height: 60px;
+  margin-top: 6px;
+}
+
+.nav-disgen-tools li select {
+  width: 130px;
+  height: 40px;
+  margin-top: 6px;
+  text-align: center;
 }
 
 .editor-tools-container nav.nav-emoji-tools {
-  background-color: rgb(241, 235, 246);
+  background-image: radial-gradient(
+    rgb(235, 230, 240),
+    rgb(198, 189, 208),
+    rgb(124, 112, 136)
+  );
   margin-block: 10px;
   font-size: 40px;
 }
@@ -68,7 +90,7 @@ section.editor-container .editor-tools-container {
 }
 
 .editor-tools-container .nav-share-dn a {
-  padding: 5px 5px;
+  padding: 10px 7px;
   color: var(--clr4);
   font-size: 20px;
 }

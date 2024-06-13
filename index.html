@@ -35,6 +35,8 @@
 
     <section class="gallery-container">
       <nav class="nav-gallery flex space-between">
+        <ul class="filterList clean-list flex space-between"></ul>
+
         <label for="search">
           <input
             type="search"
@@ -45,8 +47,6 @@
           />
           <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
         </label>
-
-        <ul class="filterList clean-list flex space-between"></ul>
       </nav>
 
       <div class="gallery-content"></div>
@@ -66,7 +66,7 @@
             type="text"
             id="inputTxt"
             class="inputTxt"
-            placeholder="writing..."
+            placeholder="Please make a Meme..."
             value=""
           />
         </form>
@@ -93,8 +93,7 @@
 
         <nav class="nav-disgen-tools">
           <ul class="clean-list flex flex-wrap">
-            <li>
-              <!-- <i class="fa-solid fa-palette"></i> -->
+            <li class="li-palette">
               <input
                 type="color"
                 class="plaette btn-border"
@@ -137,7 +136,7 @@
               </button>
             </li>
             <li>
-              <select onchange="onSelectedFont(this.value)">
+              <select onchange="onSelectedFont(this.value)" class="btn-border">
                 <option value="Arial">Arial</option>
                 <option value="sans-serif">sans-serif</option>
                 <option value="monospace">monospace</option>
@@ -148,7 +147,7 @@
         </nav>
 
         <nav class="nav-emoji-tools">
-          <ul class="clean-list flex space-between">
+          <ul class="clean-list flex space-between flex-wrap">
             <li onclick="onSelectedEmoji('🤣')">🤣</li>
             <li onclick="onSelectedEmoji('😇')">😇</li>
             <li onclick="onSelectedEmoji('😍')">😍</li>
