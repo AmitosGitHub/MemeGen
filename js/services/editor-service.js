@@ -5,6 +5,7 @@ var gMeme = {
   selectedImgId: 8,
   selectedLineIdx: 0,
   selectedShapeDrag: '',
+  isDownloadImg: false,
   lines: [
     {
       id: makeId(),
@@ -25,6 +26,7 @@ var gMeme = {
         height: 60,
       },
       isDrag: false,
+      countLine: 0,
     },
   ],
   emojis: [],
@@ -65,22 +67,19 @@ function drawText(currLine = getLineTxt()) {
 
 function drawLineRect() {
   const currLine = getLineTxt()
-  const y = currLine.pos.y
-  const width = gCtx.measureText(currLine.txt).width
-  // drawRect(20, y - 30)
-  drawRect(
-    currLine.posRect.x,
-    currLine.posRect.y,
-    currLine.posRect.width,
-    currLine.posRect.height
-  )
+  const width = gCtx.measureText(currLine.txt).width * 5 + currLine.size
+  // const height = currLine.posRect.height
+  const height = currLine.size + 10
+  const startX = currLine.pos.x - width / 2
+  const startY = currLine.pos.y - 35
+  drawRect(startX, startY, width, height)
 }
 
 function drawRect(x, y, width, height) {
   gCtx.beginPath()
   gCtx.rect(x, y, width, height)
-  gCtx.lineWidth = 1
-  gCtx.strokeStyle = 'black'
+  gCtx.lineWidth = 2
+  gCtx.strokeStyle = 'grey'
   gCtx.stroke()
   gCtx.closePath()
 }
@@ -147,6 +146,7 @@ function createDefaultTxtLine() {
       height: 60,
     },
     isDrag: false,
+    countLine: gMeme.lines.length,
   }
 }
 

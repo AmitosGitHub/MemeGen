@@ -145,6 +145,13 @@ function setSelectedImg(idx, src) {
 
 function getGalleryImgs() {
   let imgs = []
+
+  if (gFilterBy !== 'All') {
+    imgs = gImgs.filter((img) => {
+      const filterBy = gFilterBy.charAt(0).toLowerCase() + gFilterBy.slice(1)
+      return img.keywords.includes(filterBy)
+    })
+  }
   //-------- searching--------
   if (gSearch)
     imgs = gImgs.filter((img) =>
@@ -153,16 +160,10 @@ function getGalleryImgs() {
       )
     )
 
-  if (!imgs || imgs.length === 0 || !gSearch || gFilterBy === 'All') {
+  if (!imgs || imgs.length === 0 || (!gSearch && gFilterBy === 'All')) {
     imgs = JSON.parse(JSON.stringify(gImgs))
   }
 
-  if (gFilterBy !== 'All')
-    imgs = imgs.filter((img) =>
-      img.keywords.includes(
-        gFilterBy.charAt(0).toLowerCase() + gFilterBy.slice(1)
-      )
-    )
   return imgs
 }
 

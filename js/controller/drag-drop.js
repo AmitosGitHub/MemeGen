@@ -8,6 +8,7 @@ function onDown(ev) {
   const pos = getEvPos(ev)
   //   { x: 15, y : 15 }
   if (!isShapeClicked(pos)) return
+  renderCanvas()
   const shape = isShapeClicked(pos)
   setShapeDrag(shape, true)
   gStartPos = pos
@@ -60,7 +61,10 @@ function isShapeClicked(clickedPos) {
     )
       return line
   })
-  if (line) return line
+  if (line) {
+    gMeme.selectedLineIdx = line.countLine
+    return line
+  }
 
   const emoji = gMeme.emojis.find((emoji) => {
     const { x, y } = emoji.pos
