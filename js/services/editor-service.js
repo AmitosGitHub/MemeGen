@@ -90,9 +90,10 @@ function clearCanvas() {
 }
 
 function drawImg() {
-  const img = new Image()
-  img.src = `style/img/meme-square/${gMeme.selectedImgId}.jpg`
-  // gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  // const img = new Image()
+  // img.src = `style/img/meme-square/${gMeme.selectedImgId}.jpg`
+  const img = getImgMeme()
+
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
   }
@@ -101,7 +102,7 @@ function drawImg() {
 function getImgMeme() {
   const img = new Image()
   if (!gMeme.imgUpSrc)
-    img.src = `style/img/meme-square/${gMeme.selectedImgId}.jpg`
+    img.src = `style/img/meme-imgs/${gMeme.selectedImgId}.jpg`
   else img.src = gMeme.imgUpSrc
   return img
 }
@@ -186,4 +187,14 @@ function drawEmoji(emoji) {
   gCtx.font = `${emoji.size}px`
   gCtx.fillText(emoji.txt, emoji.pos.x, emoji.pos.y)
   gCtx.closePath()
+}
+
+function setRatioImgToCanvas() {
+  const img = getImgMeme()
+  //The formula for calculating the height of the canvas (if the width of the canvas is predetermined)
+  // CH=(IH*CW)/IW ----> I=image ,C=canvas ,H=height ,W=width
+  const elContainer = document.querySelector('.canvas-container')
+
+  const height = (img.height * gElCanvas.width) / img.width
+  elContainer.style.height = height + 'px'
 }

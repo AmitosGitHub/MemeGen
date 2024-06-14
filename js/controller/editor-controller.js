@@ -3,6 +3,10 @@
 function renderCanvas() {
   const meme = getMeme()
   const img = getImgMeme()
+
+  resizeCanvas()
+
+  setRatioImgToCanvas()
   clearCanvas()
 
   img.onload = () => {
@@ -19,10 +23,7 @@ function renderCanvas() {
     })
   }
 
-  let elTxt = document.querySelector('.inputTxt')
-  const lineTxt = getLineTxt()
-  if (lineTxt.txt === 'New Line') elTxt.value = ''
-  else elTxt.value = lineTxt.txt
+  setInputTxt()
 }
 
 function onChangeColor(clr) {
@@ -75,4 +76,11 @@ function onSelectedEmoji(emoji) {
   setSelectedEmoji(emoji)
 
   renderCanvas()
+}
+
+function setInputTxt() {
+  let elTxt = document.querySelector('.inputTxt')
+  const lineTxt = getLineTxt()
+  if (lineTxt.txt === 'New Line') elTxt.value = ''
+  else elTxt.value = lineTxt.txt
 }

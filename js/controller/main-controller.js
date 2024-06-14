@@ -39,7 +39,7 @@ function onToggleMenu() {
 }
 
 function resizeCanvas() {
-  var elContainer = document.querySelector('.canvas-container')
+  const elContainer = document.querySelector('.canvas-container')
   // Note: changing the canvas dimension this way clears the canvas
   gElCanvas.width = elContainer.offsetWidth
   // Unless needed, better keep height fixed.
