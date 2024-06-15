@@ -1,35 +1,56 @@
 'use strict'
 
-var gMeme = {
-  imgUpSrc: '',
-  selectedImgId: 8,
-  selectedLineIdx: 0,
-  selectedShapeDrag: '',
-  isDownloadImg: false,
-  lines: [
-    {
-      id: makeId(),
-      type: 'txt',
-      txt: 'New Line',
-      size: 50,
-      align: 'center',
-      color: 'white',
-      font: 'david',
-      pos: {
-        x: 200,
-        y: 60,
+var KEY_MEMES = 'savedMeme'
+
+var gMeme
+var gSavedMemes = []
+var gEmojis = ['🤣', '😇', '😍', '😘', '😅', '😛', '🧐', '🥰']
+var gRandomTxtMemes = [
+  'No Stress',
+  'Just Vibing',
+  '?????',
+  'WOW!!!',
+  'Go Go Go',
+  'I AM A MEME',
+  'What?',
+]
+
+function createMeme(txt = 'New Line') {
+  return {
+    imgUpSrc: '',
+    selectedImgId: getRandomInt(1, 20),
+    selectedLineIdx: 0,
+    selectedShapeDrag: '',
+    isDownloadImg: false,
+    lines: [
+      {
+        id: makeId(),
+        type: 'txt',
+        txt,
+        size: 50,
+        align: 'center',
+        color: 'white',
+        font: 'david',
+        pos: {
+          x: 200,
+          y: 60,
+        },
+        posRect: {
+          x: 20,
+          y: 20,
+          width: 400,
+          height: 60,
+        },
+        isDrag: false,
+        countLine: 0,
       },
-      posRect: {
-        x: 20,
-        y: 20,
-        width: 400,
-        height: 60,
-      },
-      isDrag: false,
-      countLine: 0,
-    },
-  ],
-  emojis: [],
+    ],
+    emojis: [],
+  }
+}
+
+function getEmojis() {
+  return gEmojis
 }
 
 function setTextMeme(txt) {
@@ -115,8 +136,8 @@ function setChangeFontSize(size) {
   getLineTxt().size += size
 }
 
-function addLineTxt() {
-  const newLine = createDefaultTxtLine()
+function addLineTxt(txt) {
+  const newLine = createDefaultTxtLine(txt)
 
   gMeme.lines.push(newLine)
 
@@ -124,13 +145,13 @@ function addLineTxt() {
   setSelectedLineIdx(idx)
 }
 
-function createDefaultTxtLine() {
+function createDefaultTxtLine(txt = 'New Line') {
   const posY = !gMeme.lines.length ? 60 : gMeme.lines.length * 100 + 60
 
   return {
     id: makeId(),
     type: 'txt',
-    txt: 'New Line',
+    txt,
     size: 50,
     align: 'center',
     color: 'white',
@@ -197,4 +218,75 @@ function setRatioImgToCanvas() {
 
   const height = (img.height * gElCanvas.width) / img.width
   elContainer.style.height = height + 'px'
+}
+
+function getRandomTxt() {
+  const idx = getRandomInt(0, gRandomTxtMemes.length)
+  return gRandomTxtMemes[idx]
+}
+
+function createFlexibleMeme() {
+  const txt1 = getRandomTxt()
+  const txt2 = getRandomTxt()
+  gMeme = createMeme(txt1)
+  addLineTxt(txt2)
+}
+
+function saveMeme() {
+  const meme = JSON.parse(JSON.stringify(getMeme()))
+  const data = gElCanvas.toDataURL()
+  const id = makeId()
+  gSavedMemes.push({ id, meme, data })
+
+  saveMemesToLocalStorage()
+}
+
+function saveMemesToLocalStorage() {
+  saveToLocalStorage(KEY_MEMES, gSavedMemes)
+}
+
+function getSavedMemes() {
+  let memes = getFromLocalStorage(KEY_MEMES)
+  if (!memes) memes = gSavedMemes
+  else gSavedMemes = memes
+  return memes
+}
+
+function renderSavedMemes() {
+  const memes = getSavedMemes()
+  let strHtml = ''
+
+  strHtml = memes
+    .map(
+      (meme) =>
+        `
+         <article >
+
+             <img src="${meme.data}" alt="meme" />
+
+             <div class="nav-meme-tools">
+                <button class="btn-border" onclick="onEditMemeSaved(event,'${meme.id}')">edit</button>
+                <button class="btn-border" onclick="onDownloadCanvas(event,'${meme.id}')">download</button>
+                <button class="btn-border" onclick="onDeleteMemeSaved(event,'${meme.id}')">delete</button>
+             </div>
+
+         </article>
+         `
+    )
+    .join('')
+
+  document.querySelector('.gallery-meme-container').innerHTML = strHtml
+}
+
+function editMemeSaved(memeId) {
+  const meme = getSavedMemes().find((meme) => meme.id === memeId)
+  gMeme = meme.meme
+}
+
+function deleteMemeSaved(memeId) {
+  const idx = gSavedMemes.findIndex((meme) => meme.id === memeId)
+  gSavedMemes.splice(idx, 1)
+  saveMemesToLocalStorage()
+
+  return gSavedMemes
 }

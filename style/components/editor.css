@@ -50,6 +50,11 @@ section.editor-container .editor-tools-container {
   transform: rotate(90deg);
 }
 
+.editor-tools-container nav.nav-txt-tools .btn-save {
+  color: rgb(4, 4, 121);
+  font-size: 16px;
+}
+
 .editor-tools-container nav.nav-disgen-tools {
   background-image: radial-gradient(
     rgb(235, 230, 240),
@@ -97,6 +102,12 @@ section.editor-container .editor-tools-container {
 
 .editor-tools-container .nav-share-dn a.btn-share {
   background-color: green;
+}
+
+.editor-tools-container .nav-share-dn .btn-flexible {
+  background-color: rgb(14, 126, 113);
+  color: var(--clr4);
+  font-size: 20px;
 }
 
 .editor-tools-container .nav-share-dn a.btn-dn {

@@ -1,6 +1,7 @@
 'use strict'
 
 function renderGallery() {
+  const imgs = getGalleryImgs()
   let strHtml = `
    <article class="card-upload-file">
     <input
@@ -10,16 +11,16 @@ function renderGallery() {
     />
   </article>`
 
-  const imgs = getGalleryImgs()
-
-  imgs.forEach(
-    (img, idx) =>
-      (strHtml += `
+  strHtml += imgs
+    .map(
+      (img, idx) =>
+        `
          <article onclick="onSelectedImg(this,${img.id})">
            <img src="${img.url ? img.url : img.src}" alt="image" />
          </article>
-         `)
-  )
+         `
+    )
+    .join('')
 
   document.querySelector('.gallery-content').innerHTML = strHtml
 }

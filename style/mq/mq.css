@@ -98,4 +98,12 @@
     padding: 10px 0px;
     width: 100%;
   }
+
+  /* -----MEME SAVED------ */
+
+  section.gallery-meme-container {
+    grid-column: 1/-1;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }

@@ -6,11 +6,12 @@ var gCtx
 function onInit() {
   renderGallery()
   renderFilterBy()
-  InitCanvas()
+  createCanvas()
   resizeCanvas()
 
   addListeners()
 
+  if (!gMeme) gMeme = createMeme()
   renderCanvas()
 }
 
@@ -29,7 +30,7 @@ function addListeners() {
   gElCanvas.addEventListener('touchend', onUp)
 }
 
-function InitCanvas() {
+function createCanvas() {
   gElCanvas = document.querySelector('.main-canvas')
   gCtx = gElCanvas.getContext('2d')
 }
@@ -49,11 +50,23 @@ function resizeCanvas() {
 function onOpenEditor() {
   document.querySelector('.gallery-container').classList.add('hide')
   document.querySelector('.editor-container').classList.remove('hide')
+  document.querySelector('.gallery-meme-container').classList.add('hide')
 
+  renderEmojisEditor()
+  renderCanvas()
   onInit()
 }
 
 function onOpenGallery() {
   document.querySelector('.gallery-container').classList.remove('hide')
   document.querySelector('.editor-container').classList.add('hide')
+  document.querySelector('.gallery-meme-container').classList.add('hide')
+}
+
+function onOpenMemeSaved() {
+  document.querySelector('.gallery-meme-container').classList.remove('hide')
+  document.querySelector('.gallery-container').classList.add('hide')
+  document.querySelector('.editor-container').classList.add('hide')
+
+  renderSavedMemes()
 }
